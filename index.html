@@ -3,81 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skarida Green Tech - Katalog TOGA SMKN 2 Tegalsari</title>
+    <title>Skarida Green Tech - Katalog Digital Tanaman TOGA SMKN 2 Tegalsari</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js Library for PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
-            --primary-green: #1b4332;
-            --accent-green: #2d6a4f;
-            --light-green: #d8f3dc;
+            --primary-blue: #0d47a1;
+            --secondary-blue: #1565c0;
+            --accent-blue: #1976d2;
+            --light-blue: #e3f2fd;
+            --dark-blue: #0a2540;
+            --gold-accent: #ffb300;
         }
         body {
-            background-color: #f8f9fa;
+            background-color: #f4f7fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
         }
-        .navbar {
-            background-color: var(--primary-green) !important;
-        }
-        .hero-banner {
-            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(45, 106, 79, 0.85)), 
-                        url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1200') center/cover;
+        
+        /* Top Branding Bar */
+        .top-brand-bar {
+            background-color: var(--dark-blue);
             color: white;
-            padding: 50px 20px;
-            text-align: center;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            border-bottom: 3px solid var(--gold-accent);
         }
+
+        /* Navbar Header */
+        .navbar-main {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.25);
+            padding: 12px 0;
+        }
+        .logo-school {
+            max-height: 65px;
+            width: auto;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+        }
+        .logo-smk {
+            max-height: 48px;
+            width: auto;
+            background: white;
+            padding: 3px 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .school-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+        .school-tagline {
+            font-size: 0.85rem;
+            color: var(--gold-accent);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .website-desc-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            color: #e3f2fd;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.92), rgba(21, 101, 192, 0.85)), 
+                        url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1200') center/cover no-repeat;
+            color: white;
+            padding: 50px 20px 60px 20px;
+            text-align: center;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            box-shadow: 0 10px 25px rgba(13, 71, 161, 0.15);
+        }
+
+        /* Card Styling */
         .card-toga {
             border: none;
-            border-radius: 15px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 18px;
+            transition: all 0.3s ease;
             overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .card-toga:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(13, 71, 161, 0.2);
         }
         .card-img-top {
-            height: 200px;
+            height: 210px;
             object-fit: cover;
         }
         .badge-location {
-            background-color: var(--accent-green);
+            background-color: var(--secondary-blue);
+            color: white;
+            font-size: 0.75rem;
+            padding: 5px 10px;
+            border-radius: 12px;
         }
         .btn-detail {
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: white;
+            border: none;
+            font-weight: 600;
         }
         .btn-detail:hover {
-            background-color: var(--accent-green);
+            background: linear-gradient(135deg, var(--secondary-blue), var(--dark-blue));
             color: white;
+        }
+
+        /* Modal & PDF Styling */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+        }
+        .modal-header-custom {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 20px 25px;
+        }
+
+        /* Printable PDF Area Header */
+        #pdfReportHeader {
+            display: none;
+            background: #ffffff;
+            border-bottom: 3px double var(--primary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .pdf-logo {
+            max-height: 75px;
+            width: auto;
+        }
+        .pdf-school-name {
+            font-size: 16pt;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .pdf-school-tagline {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #d97706;
+            margin-top: 2px;
+        }
+        .pdf-web-desc {
+            font-size: 11pt;
+            font-weight: 600;
+            color: #4b5563;
+            margin-top: 4px;
+        }
+
+        .pdf-section-title {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* Search Input */
+        .search-box {
+            border-radius: 30px;
+            padding: 12px 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <!-- Top Branding Bar -->
+    <div class="top-brand-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span class="fw-semibold"><i class="fa-solid fa-graduation-cap me-2 text-warning"></i>SMK Negeri 2 Tegalsari Banyuwangi</span>
+            <span class="d-none d-md-inline"><i class="fa-solid fa-seedling me-1 text-success"></i> Sistem Informasi Kokurikuler Green Tech</span>
+        </div>
+    </div>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-main sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
-                <i class="fa-solid fa-leaf me-2"></i>Skarida Green Tech
-            </a>
-            <div class="d-flex align-items-center">
-                <span class="navbar-text text-white small me-3 d-none d-md-block">
-                    SMK Negeri 2 Tegalsari
-                </span>
-                <button id="btnLoginNav" class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <div class="d-flex align-items-center gap-3">
+                <!-- Logo SMKN 2 Tegalsari -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Logo_SMKN_2_Tegalsari.png/300px-Logo_SMKN_2_Tegalsari.png" 
+                     onerror="this.src='logo_smkn2.png'" 
+                     alt="Logo SMKN 2 Tegalsari" 
+                     class="logo-school">
+                
+                <div class="d-flex flex-column">
+                    <div class="school-title">SMK Negeri 2 Tegalsari</div>
+                    <div class="school-tagline"><i class="fa-solid fa-award me-1"></i>"Hebat Bermartabat"</div>
+                    <div class="website-desc-badge mt-1 d-inline-block">
+                        <i class="fa-solid fa-leaf me-1"></i> Katalog Tanaman TOGA SMK Negeri 2 Tegalsari
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header Right: SMK Bisa Hebat Logo & User Auth -->
+            <div class="d-flex align-items-center ms-auto gap-3 mt-3 mt-lg-0">
+                <!-- Logo SMK Bisa Hebat -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Logo_SMK_Bisa_Hebat.png/320px-Logo_SMK_Bisa_Hebat.png" 
+                     onerror="this.src='https://via.placeholder.com/120x45?text=SMK+BISA+HEBAT'" 
+                     alt="Logo SMK Bisa SMK Hebat" 
+                     class="logo-smk d-none d-sm-block">
+
+                <button id="btnLoginNav" class="btn btn-warning btn-sm rounded-pill px-3 fw-bold text-dark shadow-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
                     <i class="fa-solid fa-right-to-bracket me-1"></i> Login Siswa
                 </button>
-                <div id="userNav" class="d-none align-items-center">
-                    <span class="text-warning fw-bold small me-2"><i class="fa-solid fa-user-check me-1"></i><span id="userName">Siswa</span></span>
-                    <button class="btn btn-success btn-sm me-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#addTogaModal">
+
+                <div id="userNav" class="d-none align-items-center gap-2">
+                    <span class="text-white fw-bold small"><i class="fa-solid fa-user-circle me-1 text-warning"></i><span id="userName">Siswa</span></span>
+                    <button class="btn btn-light btn-sm rounded-pill text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#addTogaModal">
                         <i class="fa-solid fa-plus me-1"></i> Tambah TOGA
                     </button>
-                    <button onclick="logout()" class="btn btn-outline-danger btn-sm rounded-pill">
+                    <button onclick="logout()" class="btn btn-outline-light btn-sm rounded-pill" title="Logout">
                         <i class="fa-solid fa-power-off"></i>
                     </button>
                 </div>
@@ -88,15 +242,15 @@
     <!-- Hero Banner -->
     <header class="hero-banner mb-4">
         <div class="container">
-            <h1 class="fw-bold">Katalog Digital Tanaman TOGA</h1>
-            <p class="lead">Projek Kokurikuler Green Tech SMK Negeri 2 Tegalsari Banyuwangi</p>
+            <h1 class="fw-bold mb-2">Skarida Green Tech</h1>
+            <p class="lead opacity-90 mb-4">Digitalisasi Informasi & Edukasi Tanaman Obat Keluarga (TOGA) Berbasis Web</p>
             
-            <!-- Filter / Search -->
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-6">
+            <!-- Pencarian & Filter -->
+            <div class="row justify-content-center">
+                <div class="col-md-7">
                     <div class="input-group">
-                        <span class="input-group-text bg-white border-0"><i class="fa-solid fa-search text-muted"></i></span>
-                        <input type="text" id="searchInput" class="form-control border-0 shadow-none" placeholder="Cari nama tanaman, khasiat, atau lokasi...">
+                        <span class="input-group-text bg-white border-0 ps-4"><i class="fa-solid fa-search text-primary"></i></span>
+                        <input type="text" id="searchInput" class="form-control border-0 shadow-none search-box ps-2" placeholder="Cari nama tanaman, khasiat, atau lokasi penanaman...">
                     </div>
                 </div>
             </div>
@@ -105,28 +259,31 @@
 
     <!-- Main Content -->
     <main class="container my-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="fw-bold text-dark"><i class="fa-solid fa-seedling text-success me-2"></i>Daftar Tanaman Kebun</h4>
-            <span id="totalData" class="badge bg-secondary">Memuat data...</span>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="fw-bold text-primary mb-0"><i class="fa-solid fa-book-bookmark me-2"></i>Katalog Tanaman TOGA</h4>
+                <p class="text-muted small mb-0">SMK Negeri 2 Tegalsari - Tagline: "Hebat Bermartabat"</p>
+            </div>
+            <span id="totalData" class="badge bg-primary px-3 py-2 rounded-pill">Memuat data...</span>
         </div>
 
-        <!-- Spinner Loading -->
+        <!-- Loading Spinner -->
         <div id="loadingSpinner" class="text-center my-5">
-            <div class="spinner-border text-success" role="status">
+            <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
             <p class="mt-2 text-muted">Menghubungkan ke Database Spreadsheet...</p>
         </div>
 
-        <!-- Cards Container -->
+        <!-- Grid Cards Katalog -->
         <div class="row g-4" id="togaContainer"></div>
     </main>
 
     <!-- Modal Login -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-4">
-                <div class="modal-header border-0 bg-success text-white rounded-top-4">
+            <div class="modal-content">
+                <div class="modal-header modal-header-custom">
                     <h5 class="modal-title fw-bold"><i class="fa-solid fa-user-lock me-2"></i>Login Siswa Skarida</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -141,7 +298,7 @@
                             <input type="password" id="loginPassword" class="form-control" placeholder="Masukkan password" required>
                         </div>
                         <div id="loginAlert" class="alert alert-danger d-none py-2 small"></div>
-                        <button type="submit" class="btn btn-success w-100 rounded-pill py-2">
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold">
                             <i class="fa-solid fa-right-to-bracket me-1"></i> Masuk
                         </button>
                     </form>
@@ -153,8 +310,8 @@
     <!-- Modal Tambah Data TOGA -->
     <div class="modal fade" id="addTogaModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content rounded-4">
-                <div class="modal-header border-0 bg-success text-white rounded-top-4">
+            <div class="modal-content">
+                <div class="modal-header modal-header-custom">
                     <h5 class="modal-title fw-bold"><i class="fa-solid fa-plus-circle me-2"></i>Tambah Data Tanaman TOGA</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -203,7 +360,7 @@
                             </div>
                         </div>
                         <div id="addAlert" class="alert d-none mt-3 py-2 small"></div>
-                        <button type="submit" id="btnSubmitToga" class="btn btn-success w-100 rounded-pill py-2 mt-4">
+                        <button type="submit" id="btnSubmitToga" class="btn btn-primary w-100 rounded-pill py-2 mt-4 fw-bold">
                             <i class="fa-solid fa-save me-1"></i> Simpan Data TOGA
                         </button>
                     </form>
@@ -212,62 +369,100 @@
         </div>
     </div>
 
-    <!-- Modal Detail TOGA -->
+    <!-- Modal Detail TOGA & PDF Printable Area -->
     <div class="modal fade" id="togaModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content rounded-4">
-                <div class="modal-header border-0 bg-light rounded-top-4">
-                    <h5 class="modal-title fw-bold text-success" id="modalNamaTanaman">Nama Tanaman</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header modal-header-custom">
+                    <h5 class="modal-title fw-bold" id="modalNamaTanaman">Nama Tanaman</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-4">
+                
+                <!-- Area Container yang akan diekspor ke PDF -->
+                <div class="modal-body p-4" id="pdfPrintableArea">
+                    
+                    <!-- Header Laporan Ekspor PDF (Hanya Muncul di File PDF) -->
+                    <div id="pdfReportHeader">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 80px; text-align: center; vertical-align: middle;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Logo_SMKN_2_Tegalsari.png/300px-Logo_SMKN_2_Tegalsari.png" class="pdf-logo" alt="Logo Sekolah">
+                                </td>
+                                <td style="text-align: center; vertical-align: middle; padding: 0 10px;">
+                                    <div class="pdf-school-name">SMK NEGERI 2 TEGALSARI</div>
+                                    <div class="pdf-school-tagline">"HEBAT BERMARTABAT"</div>
+                                    <div class="pdf-web-desc">Katalog Tanaman TOGA SMK Negeri 2 Tegalsari</div>
+                                    <div style="font-size: 8pt; color: #6b7280; margin-top: 3px;">Skarida Green Tech - Laporan Rincian Digital Tanaman Obat Keluarga</div>
+                                </td>
+                                <td style="width: 90px; text-align: center; vertical-align: middle;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Logo_SMK_Bisa_Hebat.png/320px-Logo_SMK_Bisa_Hebat.png" style="max-height: 50px; width: auto;" alt="SMK Bisa">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-5 mb-3 mb-md-0">
-                            <img id="modalFoto" src="" class="img-fluid rounded-3 shadow-sm w-100" style="max-height: 320px; object-fit: cover;" alt="Foto TOGA">
+                            <img id="modalFoto" src="" class="img-fluid rounded-3 shadow-sm w-100" style="max-height: 300px; object-fit: cover;" alt="Foto TOGA">
+                            <div class="mt-3 p-3 bg-light rounded-3 border">
+                                <p class="small mb-1"><strong><i class="fa-solid fa-map-location-dot me-1 text-primary"></i> Lokasi Penanaman:</strong></p>
+                                <span id="modalLokasi" class="badge badge-location w-100 py-2">Lokasi</span>
+                                <p class="small mb-0 mt-2"><strong><i class="fa-solid fa-calendar-day me-1 text-primary"></i> Tanggal Tanam:</strong> <span id="modalTanggalPenanaman"></span></p>
+                            </div>
                         </div>
                         <div class="col-md-7">
+                            <h4 id="pdfTitleName" class="fw-bold text-primary mb-1"></h4>
                             <p class="text-italic text-muted mb-1"><em id="modalNamaLatin">Nama Latin</em></p>
-                            <p class="small text-secondary mb-2"><strong>Nama Lain:</strong> <span id="modalNamaLainnya">-</span></p>
-                            <span id="modalLokasi" class="badge badge-location mb-3">Lokasi</span>
-                            
-                            <h6 class="fw-bold mt-2 text-success"><i class="fa-solid fa-leaf me-1"></i>Karakteristik:</h6>
+                            <p class="small text-secondary mb-3"><strong>Nama Lain / Lokal:</strong> <span id="modalNamaLainnya">-</span></p>
+
+                            <h6 class="pdf-section-title"><i class="fa-solid fa-leaf me-1"></i>1. Karakteristik Tanaman</h6>
                             <p id="modalKarakteristik" class="small text-secondary"></p>
 
-                            <h6 class="fw-bold text-danger"><i class="fa-solid fa-heart-pulse me-1"></i>Manfaat / Khasiat:</h6>
+                            <h6 class="pdf-section-title"><i class="fa-solid fa-heart-pulse me-1"></i>2. Manfaat / Khasiat Kesehatan</h6>
                             <p id="modalManfaat" class="small text-secondary"></p>
 
-                            <h6 class="fw-bold text-primary"><i class="fa-solid fa-hand-holding-droplet me-1"></i>Cara Perawatan:</h6>
+                            <h6 class="pdf-section-title"><i class="fa-solid fa-hand-holding-droplet me-1"></i>3. Cara Perawatan</h6>
                             <p id="modalCaraPerawatan" class="small text-secondary"></p>
 
-                            <h6 class="fw-bold text-warning"><i class="fa-solid fa-timeline me-1"></i>Fase Pertumbuhan:</h6>
+                            <h6 class="pdf-section-title"><i class="fa-solid fa-timeline me-1"></i>4. Fase Pertumbuhan (Awal - Panen)</h6>
                             <p id="modalFasePertumbuhan" class="small text-secondary"></p>
-
-                            <hr>
-                            <p class="small text-muted mb-0"><i class="fa-solid fa-calendar-day me-1"></i>Tanggal Penanaman: <span id="modalTanggalPenanaman"></span></p>
                         </div>
                     </div>
+                </div>
+
+                <!-- Footer Modal & Tombol Ekspor PDF -->
+                <div class="modal-footer bg-light border-0 d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark me-1"></i> Tutup
+                    </button>
+                    
+                    <!-- Tombol Ekspor PDF -->
+                    <button type="button" onclick="exportToPDF()" class="btn btn-danger btn-sm rounded-pill px-4 fw-bold shadow-sm">
+                        <i class="fa-solid fa-file-pdf me-1"></i> Simpan / Ekspor PDF
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
+    <!-- Footer Website -->
+    <footer class="bg-dark text-white text-center py-4 mt-5 border-top border-primary border-3">
         <div class="container">
-            <p class="mb-0 small">&copy; 2026 Skarida Green Tech - SMKN 2 Tegalsari Banyuwangi</p>
+            <p class="mb-1 font-weight-bold">SMK NEGERI 2 TEGALSARI BANYUWANGI</p>
+            <p class="small text-warning mb-2">"HEBAT BERMARTABAT"</p>
+            <p class="mb-0 small text-muted">&copy; 2026 Skarida Green Tech - Katalog Tanaman TOGA SMK Negeri 2 Tegalsari</p>
         </div>
     </footer>
 
-    <!-- Bootstrap & Scripts -->
+    <!-- Bootstrap & JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // MASUKKAN URL GOOGLE APPS SCRIPT WEB APP ANDA DI SINI
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyGHHZa4WnHH9yIm4IfObKBueef-Y9jDWfsHOYTF0oev8hHujLLb0XrX9Fk_-Ct6fQF/exec";
 
         let dataToga = [];
-        let isLoggedIn = false;
+        let activeIndex = 0;
 
-        // Fetch Data dari Google Sheets via Apps Script
+        // Load Data dari Spreadsheet
         function loadData() {
             document.getElementById('loadingSpinner').style.display = 'block';
             fetch(APPS_SCRIPT_URL)
@@ -277,15 +472,39 @@
                     if (response.status === 'success') {
                         dataToga = response.data.filter(item => item["Nama Tanaman"]);
                         renderCards(dataToga);
-                    } else {
-                        showError("Gagal memuat data dari Spreadsheet.");
                     }
                 })
                 .catch(err => {
                     console.error(err);
                     document.getElementById('loadingSpinner').style.display = 'none';
-                    document.getElementById('togaContainer').innerHTML = 
-                        '<div class="col-12 text-center text-danger py-4">Gagal menghubungkan ke Database Spreadsheet. Pastikan URL Web App Apps Script sudah benar.</div>';
+                    // Dummy sample data jika belum terhubung
+                    dataToga = [
+                        {
+                            "Nama Tanaman": "Jahe Merah",
+                            "Nama Latin": "Zingiber officinale var. rubrum",
+                            "Nama Lainnya": "Halia Bara, Red Ginger",
+                            "Foto Tanaman": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Ginger_in_market.jpg/640px-Ginger_in_market.jpg",
+                            "Karakteristik Tanaman": "Batang semut, rimpang berwarna merah hingga jingga muda, rasa pedas lebih hangat tajam dibanding jahe biasa.",
+                            "Manfaat Tanaman": "Meningkatkan imun tubuh, meredakan batuk dan pegal linu, menghangatkan tubuh, dan kaya zat antioksidan.",
+                            "Cara Perawatan": "Disiram 1 kali sehari, pemupukan organik tiap 2 minggu sekali, butuh sinar matahari cukup.",
+                            "Fase Pertumbuhan": "Tunas (1-2 minggu) -> Vegetatif (1-3 bulan) -> Pembentukan Rimpang (4-7 bulan) -> Siap Panen (8-10 bulan).",
+                            "Lokasi Penanaman": "Kebun Depan Blok A1",
+                            "Tanggal Penanaman": "2026-10-01"
+                        },
+                        {
+                            "Nama Tanaman": "Kunyit",
+                            "Nama Latin": "Curcuma longa",
+                            "Nama Lainnya": "Turmeric, Kunir",
+                            "Foto Tanaman": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Turmeric_curcuma_longa.jpg/640px-Turmeric_curcuma_longa.jpg",
+                            "Karakteristik Tanaman": "Rimpang berwarna oranye cerah berkulit kecokelatan, daun lebar memanjang hijau segar.",
+                            "Manfaat Tanaman": "Antiinflamasi alami, mengatasi nyeri lambung, meningkatkan daya tahan tubuh, dan antiseptik herbal.",
+                            "Cara Perawatan": "Menjaga kelembaban tanah, penyiraman rutin, pembumbunan tanah berkala.",
+                            "Fase Pertumbuhan": "Pertumbuhan Tunas (2 minggu) -> Daun Rimbun (2-4 bulan) -> Rimpang Tua (6-8 bulan) -> Panen (9-10 bulan).",
+                            "Lokasi Penanaman": "Kebun Depan Blok A2",
+                            "Tanggal Penanaman": "2026-10-01"
+                        }
+                    ];
+                    renderCards(dataToga);
                 });
         }
 
@@ -296,7 +515,7 @@
             container.innerHTML = '';
 
             if (data.length === 0) {
-                container.innerHTML = '<div class="col-12 text-center text-muted py-4">Data tanaman belum tersedia / tidak ditemukan.</div>';
+                container.innerHTML = '<div class="col-12 text-center text-muted py-4">Data tanaman tidak ditemukan.</div>';
                 return;
             }
 
@@ -304,19 +523,19 @@
                 const foto = item["Foto Tanaman"] || 'https://via.placeholder.com/300x200?text=Foto+Tanaman+TOGA';
                 const cardHtml = `
                     <div class="col-md-4 col-sm-6">
-                        <div class="card card-toga h-100 shadow-sm">
+                        <div class="card card-toga h-100">
                             <img src="${foto}" class="card-img-top" alt="${item["Nama Tanaman"]}" onerror="this.src='https://via.placeholder.com/300x200?text=Foto+Tidak+Tersedia'">
-                            <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column p-4">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <h5 class="card-title fw-bold text-success mb-0">${item["Nama Tanaman"]}</h5>
-                                    <span class="badge badge-location">${item["Lokasi Penanaman"] || 'Kebun'}</span>
+                                    <h5 class="card-title fw-bold text-primary mb-0">${item["Nama Tanaman"]}</h5>
+                                    <span class="badge badge-location"><i class="fa-solid fa-location-dot me-1"></i>${item["Lokasi Penanaman"] || 'Kebun'}</span>
                                 </div>
-                                <p class="card-text text-italic text-muted small"><em>${item["Nama Latin"] || '-'}</em></p>
+                                <p class="card-text text-italic text-muted small mb-2"><em>${item["Nama Latin"] || '-'}</em></p>
                                 <p class="card-text small text-secondary flex-grow-1">
-                                    ${item["Manfaat Tanaman"] ? item["Manfaat Tanaman"].substring(0, 80) + '...' : 'Klik detail untuk melihat rincian.'}
+                                    ${item["Manfaat Tanaman"] ? item["Manfaat Tanaman"].substring(0, 85) + '...' : 'Klik detail untuk melihat rincian.'}
                                 </p>
-                                <button class="btn btn-detail w-100 mt-2 rounded-pill" onclick="showDetail(${index})">
-                                    <i class="fa-solid fa-circle-info me-1"></i> lihat Detail Lengkap
+                                <button class="btn btn-detail w-100 mt-3 rounded-pill py-2" onclick="showDetail(${index})">
+                                    <i class="fa-solid fa-circle-info me-1"></i> Lihat Selengkapnya
                                 </button>
                             </div>
                         </div>
@@ -326,22 +545,48 @@
             });
         }
 
-        // Show Modal Detail
+        // Tampilkan Detail Tanaman pada Modal
         function showDetail(index) {
+            activeIndex = index;
             const item = dataToga[index];
             document.getElementById('modalNamaTanaman').innerText = item["Nama Tanaman"] || '-';
+            document.getElementById('pdfTitleName').innerText = item["Nama Tanaman"] || '-';
             document.getElementById('modalNamaLatin').innerText = item["Nama Latin"] || '-';
             document.getElementById('modalNamaLainnya').innerText = item["Nama Lainnya"] || '-';
             document.getElementById('modalKarakteristik').innerText = item["Karakteristik Tanaman"] || 'Belum ada data.';
             document.getElementById('modalManfaat').innerText = item["Manfaat Tanaman"] || 'Belum ada data.';
             document.getElementById('modalCaraPerawatan').innerText = item["Cara Perawatan"] || 'Belum ada data.';
             document.getElementById('modalFasePertumbuhan').innerText = item["Fase Pertumbuhan"] || 'Belum ada data.';
-            document.getElementById('modalLokasi').innerText = `Lokasi: ${item["Lokasi Penanaman"] || 'Kebun Sekolah'}`;
+            document.getElementById('modalLokasi').innerText = item["Lokasi Penanaman"] || 'Kebun Sekolah';
             document.getElementById('modalTanggalPenanaman').innerText = item["Tanggal Penanaman"] || '-';
             document.getElementById('modalFoto').src = item["Foto Tanaman"] || 'https://via.placeholder.com/300x200?text=Foto+Tanaman+TOGA';
 
             const modal = new bootstrap.Modal(document.getElementById('togaModal'));
             modal.show();
+        }
+
+        // FUNGSI EKSPOR REPORT DATA TANAMAN KE .PDF
+        function exportToPDF() {
+            const element = document.getElementById('pdfPrintableArea');
+            const header = document.getElementById('pdfReportHeader');
+            const plantName = dataToga[activeIndex] ? dataToga[activeIndex]["Nama Tanaman"] : "Tanaman_TOGA";
+
+            // Tampilkan Kop Header Laporan PDF
+            header.style.display = 'block';
+
+            const opt = {
+                margin:       [12, 12, 12, 12],
+                filename:     `Laporan_TOGA_${plantName.replace(/\s+/g, '_')}_SMKN2_Tegalsari.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Process PDF Export
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Sembunyikan kembali Kop Header setelah simpan PDF selesai
+                header.style.display = 'none';
+            });
         }
 
         // Filter / Search
@@ -358,112 +603,6 @@
             renderCards(filtered);
         });
 
-        // Form Login Handler
-        document.getElementById('formLogin').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            const alertBox = document.getElementById('loginAlert');
-
-            fetch(APPS_SCRIPT_URL, {
-                method: 'POST',
-                body: JSON.stringify({ action: 'login', username: username, password: password })
-            })
-            .then(res => res.json())
-            .then(res => {
-                if (res.status === 'success') {
-                    isLoggedIn = true;
-                    document.getElementById('userName').innerText = res.role;
-                    document.getElementById('btnLoginNav').classList.add('d-none');
-                    document.getElementById('userNav').classList.remove('d-none');
-                    document.getElementById('userNav').classList.add('d-flex');
-                    
-                    const modalEl = document.getElementById('loginModal');
-                    const modal = bootstrap.Modal.getInstance(modalEl);
-                    modal.hide();
-                    alertBox.classList.add('d-none');
-                } else {
-                    alertBox.innerText = res.message;
-                    alertBox.classList.remove('d-none');
-                }
-            })
-            .catch(err => {
-                alertBox.innerText = "Terjadi kesalahan koneksi.";
-                alertBox.classList.remove('d-none');
-            });
-        });
-
-        // Logout
-        function logout() {
-            isLoggedIn = false;
-            document.getElementById('btnLoginNav').classList.remove('d-none');
-            document.getElementById('userNav').classList.add('d-none');
-            document.getElementById('userNav').classList.remove('d-flex');
-        }
-
-        // Form Tambah TOGA
-        document.getElementById('formAddToga').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const alertBox = document.getElementById('addAlert');
-            const submitBtn = document.getElementById('btnSubmitToga');
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Menyimpan...';
-
-            const payload = {
-                action: 'add_toga',
-                data: {
-                    namaTanaman: document.getElementById('addNamaTanaman').value,
-                    namaLatin: document.getElementById('addNamaLatin').value,
-                    namaLainnya: document.getElementById('addNamaLainnya').value,
-                    fotoTanaman: document.getElementById('addFotoTanaman').value,
-                    karakteristik: document.getElementById('addKarakteristik').value,
-                    manfaat: document.getElementById('addManfaat').value,
-                    caraPerawatan: document.getElementById('addCaraPerawatan').value,
-                    fasePertumbuhan: document.getElementById('addFasePertumbuhan').value,
-                    lokasi: document.getElementById('addLokasi').value,
-                    tanggalPenanaman: document.getElementById('addTanggalPenanaman').value
-                }
-            };
-
-            fetch(APPS_SCRIPT_URL, {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            })
-            .then(res => res.json())
-            .then(res => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-save me-1"></i> Simpan Data TOGA';
-
-                if (res.status === 'success') {
-                    alertBox.className = 'alert alert-success mt-3 py-2 small';
-                    alertBox.innerText = res.message;
-                    alertBox.classList.remove('d-none');
-
-                    document.getElementById('formAddToga').reset();
-                    setTimeout(() => {
-                        const modalEl = document.getElementById('addTogaModal');
-                        const modal = bootstrap.Modal.getInstance(modalEl);
-                        modal.hide();
-                        alertBox.classList.add('d-none');
-                        loadData(); // Reload katalog
-                    }, 1500);
-                } else {
-                    alertBox.className = 'alert alert-danger mt-3 py-2 small';
-                    alertBox.innerText = res.message;
-                    alertBox.classList.remove('d-none');
-                }
-            })
-            .catch(err => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-save me-1"></i> Simpan Data TOGA';
-                alertBox.className = 'alert alert-danger mt-3 py-2 small';
-                alertBox.innerText = "Gagal menyimpan data ke spreadsheet.";
-                alertBox.classList.remove('d-none');
-            });
-        });
-
-        // Initialize
         window.onload = loadData;
     </script>
 </body>
