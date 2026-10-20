@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skarida Green Tech - Katalog TOGA SMKN 2 Tegalsari</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --accent-green: #2d6a4f;
+            --light-green: #d8f3dc;
+            --gold-accent: #ffb300;
+        }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background-color: var(--primary-green) !important;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        /* Styling Logo Sekolah di Pojok Kanan Atas Navbar */
+        .school-logo-svg {
+            width: 55px;
+            height: 55px;
+            filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.3));
+            flex-shrink: 0;
+        }
+        .hero-banner {
+            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(45, 106, 79, 0.85)), 
+                        url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1200') center/cover;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+        .card-toga {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+        .card-toga:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .badge-location {
+            background-color: var(--accent-green);
+        }
+        .btn-detail {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        .btn-detail:hover {
+            background-color: var(--accent-green);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Skarida Green Tech</span>
+            </a>
+
+            <!-- Bagian Kanan Navbar: Nama Sekolah, Tagline, & Logo SMKN 2 Tegalsari -->
+            <div class="d-flex align-items-center ms-auto gap-3">
+                <div class="text-end d-none d-lg-block text-white lh-sm">
+                    <div style="font-size: 0.95rem; font-weight: 800; text-transform: uppercase;">SMK Negeri 2 Tegalsari</div>
+                    <div style="font-size: 0.75rem; color: var(--gold-accent); font-weight: 700; letter-spacing: 0.5px;">"Hebat Bermartabat"</div>
+                </div>
+
+                <!-- Logo Resmi SMK Negeri 2 Tegalsari (SVG Inline)[cite: 3] -->
+                <svg class="school-logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#1a1168" d="M150 0 C165 25, 185 30, 205 20 C215 40, 235 45, 255 40 C250 62, 268 75, 285 80 C270 100, 280 120, 298 132 C278 145, 282 168, 298 185 C278 195, 275 218, 285 238 C265 240, 250 258, 252 280 C232 272, 212 285, 202 300 C182 288, 162 292, 150 298 C138 292, 118 288, 98 300 C88 285, 68 272, 48 280 C50 258, 35 240, 15 238 C25 218, 22 195, 2 185 C18 168, 22 145, 2 132 C20 120, 30 100, 15 80 C32 75, 50 62, 45 40 C65 45, 85 40, 95 20 C115 30, 135 25, 150 0 Z"/>
+                    <path fill="#0092df" d="M150 20 C162 40, 180 44, 198 35 C206 52, 224 56, 240 52 C236 70, 252 82, 266 86 C253 102, 261 118, 276 128 C259 139, 262 158, 276 172 C259 180, 256 199, 265 216 C248 217, 235 232, 236 250 C219 243, 202 254, 193 266 C176 256, 159 259, 150 264 C141 259, 124 256, 107 266 C98 254, 81 243, 64 250 C65 232, 52 217, 35 216 C44 199, 41 180, 24 172 C38 158, 41 139, 24 128 C39 118, 47 102, 34 86 C48 82, 64 70, 60 52 C76 56, 94 52, 102 35 C120 44, 138 40, 150 20 Z"/>
+                    <circle cx="150" cy="150" r="105" fill="#006eb6" stroke="#1a1168" stroke-width="8"/>
+                    <path id="textArcTop" d="M 60 150 A 90 90 0 0 1 240 150" fill="none"/>
+                    <path id="textArcBottom" d="M 240 150 A 90 90 0 0 1 60 150" fill="none"/>
+                    <text fill="#ffffff" font-size="16" font-weight="900" font-family="Arial" text-anchor="middle">
+                        <textPath href="#textArcTop" startOffset="50%">SMK NEGERI 2 TEGALSARI</textPath>
+                    </text>
+                    <text fill="#ffffff" font-size="14" font-weight="900" font-family="Arial" text-anchor="middle">
+                        <textPath href="#textArcBottom" startOffset="50%">TEGALSARI - BANYUWANGI</textPath>
+                    </text>
+                    <circle cx="150" cy="150" r="70" fill="#1a1168"/>
+                    <path fill="#ffd700" d="M 102 120 C 95 135 98 160 110 175 C 100 162 98 142 105 125 Z M 198 120 C 205 135 202 160 190 175 C 200 162 202 142 195 125 Z"/>
+                    <polygon points="150,83 154,95 166,95 156,102 160,114 150,106 140,114 144,102 134,95 146,95" fill="#ffd700"/>
+                    <circle cx="150" cy="150" r="48" fill="#0092df" stroke="#ffd700" stroke-width="4"/>
+                    <circle cx="150" cy="150" r="32" fill="#ffd700"/>
+                    <circle cx="150" cy="150" r="26" fill="#006eb6"/>
+                    <path fill="#e53935" d="M 134 146 Q 150 140 150 156 Q 150 140 166 146 L 166 160 Q 150 152 150 164 Q 150 152 134 160 Z" stroke="#ffffff" stroke-width="1.5"/>
+                    <path fill="#0092df" d="M 110 205 L 190 205 L 180 218 L 120 218 Z" stroke="#1a1168" stroke-width="2"/>
+                    <text x="150" y="215" fill="#ffffff" font-size="8" font-weight="bold" font-family="Arial" text-anchor="middle">MABADI'UL IHSAN</text>
+                </svg>
+
+                <button id="btnLoginNav" class="btn btn-outline-light btn-sm rounded-pill px-3 ms-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+                </button>
+                <div id="userNav" class="d-none align-items-center">
+                    <span class="text-warning fw-bold small me-2"><i class="fa-solid fa-user-check me-1"></i><span id="userName">Siswa</span></span>
+                    <button class="btn btn-success btn-sm me-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#addTogaModal">
+                        <i class="fa-solid fa-plus me-1"></i> Tambah
+                    </button>
+                    <button onclick="logout()" class="btn btn-outline-danger btn-sm rounded-pill">
+                        <i class="fa-solid fa-power-off"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner dengan Deskripsi Website & Tagline -->
+    <header class="hero-banner mb-4">
+        <div class="container">
+            <span class="badge bg-warning text-dark mb-2 px-3 py-2 rounded-pill fw-bold" style="font-size: 0.85rem;">
+                SMK Negeri 2 Tegalsari &bull; "Hebat Bermartabat"
+            </span>
+            <h1 class="fw-bold">Katalog Tanaman TOGA SMK Negeri 2 Tegalsari</h1>
+            <p class="lead">Katalog Digital Tanaman Obat Keluarga & Projek Kokurikuler Green Tech</p>
+            
+            <!-- Filter / Search -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6">
+                    <div class="input-group shadow-sm rounded-pill overflow-hidden">
+                        <span class="input-group-text bg-white border-0 ps-3"><i class="fa-solid fa-search text-muted"></i></span>
+                        <input type="text" id="searchInput" class="form-control border-0 shadow-none py-2" placeholder="Cari nama tanaman, khasiat, atau lokasi...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold text-dark"><i class="fa-solid fa-seedling text-success me-2"></i>Daftar Tanaman Kebun</h4>
+            <span id="totalData" class="badge bg-secondary">Memuat data...</span>
+        </div>
+
+        <!-- Spinner Loading -->
+        <div id="loadingSpinner" class="text-center my-5">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2 text-muted">Menghubungkan ke Database Spreadsheet...</p>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="row g-4" id="togaContainer"></div>
+    </main>
+
+    <!-- Modal Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header border-0 bg-success text-white rounded-top-4">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-user-lock me-2"></i>Login Siswa Skarida</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formLogin">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Username</label>
+                            <input type="text" id="loginUsername" class="form-control" placeholder="Masukkan username (contoh: siswa)" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Password</label>
+                            <input type="password" id="loginPassword" class="form-control" placeholder="Masukkan password" required>
+                        </div>
+                        <div id="loginAlert" class="alert alert-danger d-none py-2 small"></div>
+                        <button type="submit" class="btn btn-success w-100 rounded-pill py-2">
+                            <i class="fa-solid fa-right-to-bracket me-1"></i> Masuk
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Data TOGA -->
+    <div class="modal fade" id="addTogaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header border-0 bg-success text-white rounded-top-4">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-plus-circle me-2"></i>Tambah Data Tanaman TOGA</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formAddToga">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">1. Nama Tanaman *</label>
+                                <input type="text" id="addNamaTanaman" class="form-control" placeholder="Contoh: Jahe Merah" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">2. Nama Latin</label>
+                                <input type="text" id="addNamaLatin" class="form-control" placeholder="Contoh: Zingiber officinale var. rubrum">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">3. Nama Lainnya</label>
+                                <input type="text" id="addNamaLainnya" class="form-control" placeholder="Contoh: Halia Bara, Red Ginger">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">4. URL Foto Tanaman</label>
+                                <input type="url" id="addFotoTanaman" class="form-control" placeholder="https://link-gambar.com/foto.jpg">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-semibold">5. Karakteristik Tanaman</label>
+                                <textarea id="addKarakteristik" class="form-control" rows="2" placeholder="Ciri fisik, bentuk daun, warna batang..."></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-semibold">6. Manfaat Tanaman</label>
+                                <textarea id="addManfaat" class="form-control" rows="2" placeholder="Khasiat kesehatan, penggunaan obat tradisional..."></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-semibold">7. Cara Perawatan</label>
+                                <textarea id="addCaraPerawatan" class="form-control" rows="2" placeholder="Penyiraman, pemupukan, kebutuhan sinar matahari..."></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-semibold">8. Fase Pertumbuhan (Awal - Panen)</label>
+                                <textarea id="addFasePertumbuhan" class="form-control" rows="2" placeholder="Fase Tunas (1-2 minggu), Vegetatif (1-3 bulan), Panen (8-10 bulan)..."></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">9. Lokasi Penanaman</label>
+                                <input type="text" id="addLokasi" class="form-control" placeholder="Contoh: Kebun Depan Blok A2">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">10. Tanggal Penanaman</label>
+                                <input type="date" id="addTanggalPenanaman" class="form-control">
+                            </div>
+                        </div>
+                        <div id="addAlert" class="alert d-none mt-3 py-2 small"></div>
+                        <button type="submit" id="btnSubmitToga" class="btn btn-success w-100 rounded-pill py-2 mt-4">
+                            <i class="fa-solid fa-save me-1"></i> Simpan Data TOGA
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail TOGA -->
+    <div class="modal fade" id="togaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header border-0 bg-light rounded-top-4">
+                    <h5 class="modal-title fw-bold text-success" id="modalNamaTanaman">Nama Tanaman</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-5 mb-3 mb-md-0">
+                            <img id="modalFoto" src="" class="img-fluid rounded-3 shadow-sm w-100" style="max-height: 320px; object-fit: cover;" alt="Foto TOGA">
+                        </div>
+                        <div class="col-md-7">
+                            <p class="text-italic text-muted mb-1"><em id="modalNamaLatin">Nama Latin</em></p>
+                            <p class="small text-secondary mb-2"><strong>Nama Lain:</strong> <span id="modalNamaLainnya">-</span></p>
+                            <span id="modalLokasi" class="badge badge-location mb-3">Lokasi</span>
+                            
+                            <h6 class="fw-bold mt-2 text-success"><i class="fa-solid fa-leaf me-1"></i>Karakteristik:</h6>
+                            <p id="modalKarakteristik" class="small text-secondary"></p>
+
+                            <h6 class="fw-bold text-danger"><i class="fa-solid fa-heart-pulse me-1"></i>Manfaat / Khasiat:</h6>
+                            <p id="modalManfaat" class="small text-secondary"></p>
+
+                            <h6 class="fw-bold text-primary"><i class="fa-solid fa-hand-holding-droplet me-1"></i>Cara Perawatan:</h6>
+                            <p id="modalCaraPerawatan" class="small text-secondary"></p>
+
+                            <h6 class="fw-bold text-warning"><i class="fa-solid fa-timeline me-1"></i>Fase Pertumbuhan:</h6>
+                            <p id="modalFasePertumbuhan" class="small text-secondary"></p>
+
+                            <hr>
+                            <p class="small text-muted mb-0"><i class="fa-solid fa-calendar-day me-1"></i>Tanggal Penanaman: <span id="modalTanggalPenanaman"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 Katalog Tanaman TOGA SMK Negeri 2 Tegalsari &bull; "Hebat Bermartabat"</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // MASUKKAN URL GOOGLE APPS SCRIPT WEB APP ANDA DI SINI
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1LyRCEy9IN8eOPmFg98gWuM57eE5NyaX-Ir2J_Lw5G8oOy2QrTn9eU3uK6yYjrBO3/exec";
+
+        let dataToga = [];
+        let isLoggedIn = false;
+
+        // Fetch Data dari Google Sheets via Apps Script
+        function loadData() {
+            document.getElementById('loadingSpinner').style.display = 'block';
+            fetch(APPS_SCRIPT_URL)
+                .then(res => res.json())
+                .then(response => {
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                    if (response.status === 'success') {
+                        dataToga = response.data.filter(item => item["Nama Tanaman"]);
+                        renderCards(dataToga);
+                    } else {
+                        showError("Gagal memuat data dari Spreadsheet.");
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                    document.getElementById('togaContainer').innerHTML = 
+                        '<div class="col-12 text-center text-danger py-4">Gagal menghubungkan ke Database Spreadsheet. Pastikan URL Web App Apps Script sudah benar.</div>';
+                });
+        }
+
+        // Render Card Katalog
+        function renderCards(data) {
+            const container = document.getElementById('togaContainer');
+            document.getElementById('totalData').innerText = `${data.length} Tanaman Terdaftar`;
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center text-muted py-4">Data tanaman belum tersedia / tidak ditemukan.</div>';
+                return;
+            }
+
+            data.forEach((item, index) => {
+                const foto = item["Foto Tanaman"] || 'https://via.placeholder.com/300x200?text=Foto+Tanaman+TOGA';
+                const cardHtml = `
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card card-toga h-100 shadow-sm">
+                            <img src="${
